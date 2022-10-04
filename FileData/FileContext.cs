@@ -16,6 +16,15 @@ public class FileContext
             return dataContainer!.Users;
         }
     }
+    public ICollection<User> Posts
+    {
+        get
+        {
+            LoadData();
+            return dataContainer!.Users;
+        }
+    }
+
     
     private void LoadData()
     {
@@ -26,7 +35,8 @@ public class FileContext
             dataContainer = new ()
             {
                 
-                Users = new List<User>()
+                Users = new List<User>(),
+                Posts= new List<Post>()
             };
             return;
         }
