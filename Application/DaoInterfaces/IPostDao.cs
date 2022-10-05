@@ -6,6 +6,7 @@ namespace Application.DaoInterfaces;
 public interface IPostDao
 {
     Task<Post> CreateAsync(Post post);
-    Task<IEnumerable<PostTitleDto>> GetAsync();
+    Task<IEnumerable<PostTitleDto>> GetTitlesAsync();
+    Task<Post?> GetByTitleAsync(string title);
     
 }

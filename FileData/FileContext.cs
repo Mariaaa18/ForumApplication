@@ -5,8 +5,10 @@ namespace FileData;
 
 public class FileContext
 {
-    private const string filePath = "data.json";
+    private const string filePath = "datu.json";
     private DataContainer? dataContainer;
+    
+    
     
     public ICollection<User> Users
     {
@@ -21,9 +23,12 @@ public class FileContext
         get
         {
             LoadData();
+            Console.WriteLine("in collection posts after load data");
             return dataContainer!.Posts;
+            
         }
     }
+
 
     
     private void LoadData()
@@ -36,7 +41,9 @@ public class FileContext
             {
                 
                 Users = new List<User>(),
-                Posts= new List<Post>()
+                Posts = new List<Post>()
+                
+               
             };
             return;
         }

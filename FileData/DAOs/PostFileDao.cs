@@ -28,8 +28,21 @@ public class PostFileDao :IPostDao
         return Task.FromResult(post);
     }
 
-    public Task<IEnumerable<PostTitleDto>> GetAsync()
+    public async Task<IEnumerable<PostTitleDto>> GetTitlesAsync()
     {
-        throw new NotImplementedException();
+        List<Post> result = context.Posts.AsEnumerable().ToList();
+        List<PostTitleDto> resultTitle = new List<PostTitleDto>();
+        for (int i = 0; i < result.Count; i++)
+        {
+            resultTitle.Add(new PostTitleDto(result[i].Title));
+        }
+
+        return resultTitle.AsEnumerable();
+    }
+
+    public Task<Post?> GetByTitleAsync(string title)
+    {
+        Post? existing = context.Posts.FirstOrDefault(t => t.Title ==title );
+        return Task.FromResult(existing);
     }
 }

@@ -7,32 +7,37 @@ namespace Application.Logic;
 
 public class PostLogic:IPostLogic
 {
-    private readonly IUserDao UserDao;
-    private readonly IPostDao PostDao;
+    private readonly IUserDao userDao;
+    private readonly IPostDao postDao;
 
     public PostLogic(IUserDao userDao, IPostDao postDao)
     {
-        UserDao = userDao;
-        PostDao = postDao;
+        this.userDao = userDao;
+        this.postDao = postDao;
     }
 
     public async Task<Post> CreateAsync(PostCreationDto dto)
     {
-        User? user = await UserDao.GetByUsernameAsync(dto.OwnerUsername);
+        User? user = await userDao.GetByIdAsync(dto.IdOwner);
         if (user == null)
         {
-            throw new Exception($"User with {dto.OwnerUsername} was not found");
+            throw new Exception($"User with {dto.IdOwner} was not found");
         }
 
         ValidateTodo(dto);
         Post post = new Post(user, dto.Title, dto.Body);
-        Post created = await PostDao.CreateAsync(post);
+        Post created = await postDao.CreateAsync(post);
         return created;
     }
 
-    public Task<IEnumerable<PostTitleDto>> GetAsync()
+    public async Task<IEnumerable<PostTitleDto>> GetTitlesAsync()
     {
-        return PostDao.GetAsync();
+        return await postDao.GetTitlesAsync();
+    }
+
+    public async Task<Post?> GetByTitleAsync(string title)
+    {
+        return await postDao.GetByTitleAsync(title);
     }
 
     private void ValidateTodo(PostCreationDto dto)
