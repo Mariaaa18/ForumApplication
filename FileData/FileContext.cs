@@ -16,12 +16,12 @@ public class FileContext
             return dataContainer!.Users;
         }
     }
-    public ICollection<User> Posts
+    public ICollection<Post> Posts
     {
         get
         {
             LoadData();
-            return dataContainer!.Users;
+            return dataContainer!.Posts;
         }
     }
 

@@ -1,4 +1,4 @@
-﻿namespace Application.DaoInterfaces;
+﻿namespace Shared.DTOs;
 
 public class UserCreationDto
 {

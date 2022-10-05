@@ -4,26 +4,24 @@ using Shared;
 using Shared.DTOs;
 
 namespace WebAPI.Controllers;
-
-
 [ApiController]
 [Route("[controller]")]
-public class UsersController : ControllerBase
+public class PostController : ControllerBase
 {
-    private readonly IUserLogic userLogic;
+    private readonly IPostLogic PostLogic;
 
-    public UsersController(IUserLogic userLogic)
+    public PostController(IPostLogic postLogic)
     {
-        this.userLogic = userLogic;
+        PostLogic = postLogic;
     }
     
     [HttpPost]
-    public async Task<ActionResult<User>> CreateAsync(UserCreationDto dto)
+    public async Task<ActionResult<Post>> CreateAsync([FromBody] PostCreationDto dto)
     {
         try
         {
-            User user = await userLogic.CreateAsync(dto);
-            return Created($"/users/{user.UserName}", user);
+            Post post = await PostLogic.CreateAsync(dto);
+            return Created($"/posts/{post.Id}", post);
         }
         catch (Exception e)
         {
@@ -31,4 +29,4 @@ public class UsersController : ControllerBase
             return StatusCode(500, e.Message);
         }
     }
-} 
+}

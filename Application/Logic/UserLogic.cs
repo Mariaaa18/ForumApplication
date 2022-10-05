@@ -1,6 +1,7 @@
 ﻿using Application.DaoInterfaces;
 using Application.LogicInterfaces;
 using Shared;
+using Shared.DTOs;
 
 namespace Application.Logic;
 

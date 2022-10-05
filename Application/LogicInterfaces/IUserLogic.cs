@@ -1,5 +1,5 @@
-﻿using Application.DaoInterfaces;
-using Shared;
+﻿using Shared;
+using Shared.DTOs;
 
 namespace Application.LogicInterfaces;
 
