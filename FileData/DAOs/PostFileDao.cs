@@ -1,23 +1,22 @@
 ﻿using Application.DaoInterfaces;
 using Shared;
+using Shared.DTOs;
 
 namespace FileData.DAOs;
 
-public class PostFileDao:IPostDao
+public class PostFileDao :IPostDao
 {
     private readonly FileContext context;
-
     public PostFileDao(FileContext context)
     {
         this.context = context;
     }
-
     public Task<Post> CreateAsync(Post post)
     {
         int id = 1;
         if (context.Posts.Any())
         {
-            id = context.Posts.Max(t => t.Id);
+            id = context.Posts.Max(u => u.Id);
             id++;
         }
 
@@ -27,5 +26,10 @@ public class PostFileDao:IPostDao
         context.SaveChanges();
 
         return Task.FromResult(post);
+    }
+
+    public Task<IEnumerable<PostTitleDto>> GetAsync()
+    {
+        throw new NotImplementedException();
     }
 }

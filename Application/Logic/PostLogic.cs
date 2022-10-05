@@ -29,6 +29,12 @@ public class PostLogic:IPostLogic
         Post created = await PostDao.CreateAsync(post);
         return created;
     }
+
+    public Task<IEnumerable<PostTitleDto>> GetAsync()
+    {
+        return PostDao.GetAsync();
+    }
+
     private void ValidateTodo(PostCreationDto dto)
     {
         if (string.IsNullOrEmpty(dto.Title)) throw new Exception("Title cannot be empty.");
@@ -36,5 +42,7 @@ public class PostLogic:IPostLogic
         if (dto.Body.Length>1800) throw new Exception("Body too long.");
         // other validation stuff
     }
+    
+    
 
 }
