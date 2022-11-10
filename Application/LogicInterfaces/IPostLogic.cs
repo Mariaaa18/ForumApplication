@@ -9,5 +9,7 @@ public interface IPostLogic
     Task<IEnumerable<PostTitleDto>> GetTitlesAsync();
     
     Task<Post?> GetByTitleAsync(string title);
+    Task DeleteAsync(int id);
+    
 
 }

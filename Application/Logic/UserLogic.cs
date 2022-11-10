@@ -11,7 +11,7 @@ public class UserLogic:IUserLogic
 
     public UserLogic(IUserDao userDao)
     {
-        this.userDao = userDao;
+        this.userDao = userDao; 
     }
 
     public async Task<User> CreateAsync(UserCreationDto dto)
@@ -21,7 +21,7 @@ public class UserLogic:IUserLogic
             throw new Exception("Username already taken!");
 
         ValidateData(dto);
-        User toCreate = new User(dto.UserName, dto.Password);
+        User toCreate = new User(dto.UserName, dto.Password, dto.Age);
        
     
         User created = await userDao.CreateAsync(toCreate);
@@ -29,10 +29,21 @@ public class UserLogic:IUserLogic
         return created;
     }
 
+    public Task DeleteAsync(int id)
+    {
+        return userDao.DeleteAsync(id);
+    }
+
+    public Task<IEnumerable<User>> GetAsync()
+    {
+        return userDao.GetAsync();
+    }
+    
     private void ValidateData(UserCreationDto userToCreate)
     {
         string userName = userToCreate.UserName;
         string password = userToCreate.Password;
+        int age = userToCreate.Age;
 
         if (userName.Length < 3)
             throw new Exception("Username must be at least 3 characters!");
@@ -42,6 +53,11 @@ public class UserLogic:IUserLogic
 
         if (password.Length < 5)
             throw new Exception("Password must be at least 5 characteres!!!");
-        
+        if (age < 13)
+        {
+            throw new Exception("YOU should be over 13");
+        }
+
     }
+    
 }

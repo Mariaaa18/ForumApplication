@@ -1,0 +1,67 @@
+@page "/ViewPosts"
+@using global::Shared.DTOs
+@using HttpClients.ClientInterfaces
+@inject IPostService postService
+@inject NavigationManager navMgr
+<h3>ViewPosts</h3>
+
+<div>
+    <button @onclick="LoadPosts">Load</button>
+</div>
+
+@if (posts == null)
+{
+}
+else if (!posts.Any())
+{
+    <p>No Todos to display</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Title</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in posts)
+        {
+            <tr>
+                <td @onclick="@(() => ShowPost(item.Title))">@item.Title</td>
+       
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+@if (!string.IsNullOrEmpty(msg))
+{
+    <label style="color: red">@msg</label>
+}
+
+@code {
+    private IEnumerable<PostTitleDto>? posts;
+    private string msg = "";
+
+    private async Task LoadPosts()
+    {
+        try
+        {
+            posts = await postService.GetAsync();
+        }
+        catch(Exception e)
+        {
+            Console.WriteLine(e);
+            msg = e.Message;
+        }
+    }
+
+    private void ShowPost(string title)
+    {
+        navMgr.NavigateTo($"/ViewPost/{title}");
+    }
+
+
+
+}

@@ -45,4 +45,18 @@ public class PostFileDao :IPostDao
         Post? existing = context.Posts.FirstOrDefault(t => t.Title ==title );
         return Task.FromResult(existing);
     }
+
+    public Task DeleteAsync(int id)
+    {
+        Post? existing = context.Posts.FirstOrDefault(p => p.Id ==id);
+        if (existing == null)
+        {
+            throw new Exception($"Post with id {id} does not exist!");
+        }
+
+        context.Posts.Remove(existing); 
+        context.SaveChanges();
+    
+        return Task.CompletedTask;
+    }
 }

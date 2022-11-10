@@ -18,7 +18,7 @@ public class PostLogic:IPostLogic
 
     public async Task<Post> CreateAsync(PostCreationDto dto)
     {
-        User? user = await userDao.GetByIdAsync(dto.IdOwner);
+        User? user = await userDao.GetByUsernameAsync(dto.Owner);
         if (user == null)
         {
             throw new Exception($"User with {dto.IdOwner} was not found");
@@ -38,6 +38,11 @@ public class PostLogic:IPostLogic
     public async Task<Post?> GetByTitleAsync(string title)
     {
         return await postDao.GetByTitleAsync(title);
+    }
+
+    public Task DeleteAsync(int id)
+    {
+        return postDao.DeleteAsync(id);
     }
 
     private void ValidateTodo(PostCreationDto dto)

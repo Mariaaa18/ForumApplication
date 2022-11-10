@@ -1,0 +1,60 @@
+@page "/ViewPost/{title}"
+@using HttpClients.ClientInterfaces
+@using global::Shared
+<h3>ViewPost</h3>
+@inject IPostService postService
+
+@if (post == null)
+{
+    <p>No post</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Owner</th>
+            <th>Body</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>@post.Title</td>
+            <td>@post.Owner.UserName</td>
+            <td>@post.Body</td>
+        </tr>
+        </tbody>
+    </table>
+}
+
+ 
+@if (!string.IsNullOrEmpty(msg))
+{
+    <label style="color: red">@msg</label>
+}
+
+@code {
+
+    [Parameter]
+    public string? Title { get; set; }
+
+    private string msg = "";
+    private Post? post;
+
+    protected override async Task OnInitializedAsync()
+    {
+        msg = "";
+        try
+        {
+            post = await postService.GetByTitleAsync(Title);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            msg = e.Message;
+        }
+    }
+
+}
