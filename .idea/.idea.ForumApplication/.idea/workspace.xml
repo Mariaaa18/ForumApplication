@@ -27,6 +27,9 @@
       </map>
     </option>
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/WebAPI/Services/AuthService.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -171,6 +174,7 @@
       <workItem from="1668081163325" duration="5087000" />
       <workItem from="1668086514811" duration="117000" />
       <workItem from="1668086652025" duration="3351000" />
+      <workItem from="1668156324007" duration="296000" />
     </task>
     <task id="LOCAL-00001" summary="first class">
       <created>1664868538140</created>
