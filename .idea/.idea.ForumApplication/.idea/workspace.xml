@@ -27,12 +27,6 @@
       </map>
     </option>
   </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/BlazorWASM/Pages/CreatePost.razor" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/BlazorWASM/Pages/Login.razor" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/BlazorWASM/Pages/LoginButtons.razor" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/BlazorWASM/Pages/ViewPost.razor" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
-  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -174,7 +168,9 @@
       <workItem from="1668065219868" duration="341000" />
       <workItem from="1668066063036" duration="281000" />
       <workItem from="1668066413691" duration="39000" />
-      <workItem from="1668081163325" duration="4594000" />
+      <workItem from="1668081163325" duration="5087000" />
+      <workItem from="1668086514811" duration="117000" />
+      <workItem from="1668086652025" duration="3351000" />
     </task>
     <task id="LOCAL-00001" summary="first class">
       <created>1664868538140</created>
