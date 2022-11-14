@@ -9,5 +9,6 @@ public interface IPostDao
     Task<IEnumerable<PostTitleDto>> GetTitlesAsync();
     Task<Post?> GetByTitleAsync(string title);
     Task DeleteAsync(int id);
+    Task<Post?> GetByIdAsync(int id);
     
 }
