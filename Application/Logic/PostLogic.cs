@@ -15,8 +15,8 @@ public class PostLogic:IPostLogic
         this.userDao = userDao;
         this.postDao = postDao;
     }
-
-    public async Task<Post> CreateAsync(PostCreationDto dto)
+//hello
+public async Task<Post> CreateAsync(PostCreationDto dto)
     {
         User? user = await userDao.GetByUsernameAsync(dto.Owner);
         if (user == null)

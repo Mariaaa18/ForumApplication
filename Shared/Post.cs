@@ -13,4 +13,8 @@ public class Post
         Title = title;
         Body = body;
     }
+
+    public Post()
+    {
+    }
 }
